@@ -1,0 +1,67 @@
+radnik[
+    ime => \string,
+    prezime => \string,
+    godiste => \integer,
+    radno_vrijeme => struct,
+    satnica => \integer
+].
+
+ravnatelj :: radnik[
+    podredeni => ucitelj
+].
+
+ucitelj :: radnik[
+    nadredeni => ravnatelj,
+    podredeni => ucenik
+].
+
+ucenik :: radnik[
+    nadredeni => ucitelj
+].
+
+
+ivica : ravnatelj[
+    ime -> Ivica,
+    prezime -> Ivic,
+    godiste -> 1964,
+    radno_vrijeme -> od_do(7, 19),
+    satnica -> 65,
+    podredeni -> { ivona, hrvoje, joza, stjepan }
+].
+
+ivona : ucitelj[
+    ime -> Ivona,
+    prezime -> Ivonkic,
+    godiste -> 1986,
+    radno_vrijeme -> od_do(8, 14),
+    satnica -> 45,
+    nadredeni -> ivica,
+    podredeni -> { hrvoje, joza, stjepan }
+].
+
+hrvoje : ucenik[
+    ime -> Hrvoje,
+    prezime -> Hrvic,
+    godiste -> 2010,
+    radno_vrijeme -> od_do(8, 14),
+    satnica -> 0,
+    nadredeni -> ivona
+].
+
+joza : ucenik[
+    ime -> Joza,
+    prezime -> Josefinski,
+    godiste -> 2009,
+    radno_vrijeme -> od_do(8, 14),
+    satnica -> 0,
+    nadredeni -> ivona
+].
+
+stjepan : ucenik[
+    ime -> Stjepan,
+    prezime -> Stipic,
+    godiste -> 2011,
+    radno_vrijeme -> od_do(8, 14),
+    satnica -> 0,
+    nadredeni -> ivona
+].
